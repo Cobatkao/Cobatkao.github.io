@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从封装两个函数到入门jQuery | 猪脚面线的知识库</title>
+    <meta name="description" content="For what it&#39;s worth, it&#39;s never too late.（Updating... XD）">
+    <link rel="icon" href="/isaacgaoblog/logo.ico">
+    
+    <link rel="preload" href="/isaacgaoblog/assets/css/0.styles.60655061.css" as="style"><link rel="preload" href="/isaacgaoblog/assets/js/app.01da7489.js" as="script"><link rel="preload" href="/isaacgaoblog/assets/js/20.66d4ff5f.js" as="script"><link rel="prefetch" href="/isaacgaoblog/assets/js/10.bb6e04e4.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/11.391fd545.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/12.602facc5.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/13.2d9982a6.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/14.83aaa352.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/15.90b7ef7b.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/16.fb97507d.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/17.d2fb61a5.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/18.5f85ae3a.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/19.b706601e.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/2.3704caf5.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/21.341d678b.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/22.3af63f24.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/23.4ecf9c22.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/24.15a6c94a.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/25.bc5a5667.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/26.823bab78.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/27.0327437d.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/28.db82409c.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/29.e695a449.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/3.98b19d1d.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/4.4d6e9538.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/5.44d0334a.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/6.b35e585c.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/7.723d1e3a.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/8.e2bfc8ff.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/9.508f61f1.js">
+    <link rel="stylesheet" href="/isaacgaoblog/assets/css/0.styles.60655061.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/isaacgaoblog/" class="home-link router-link-active"><!----> <span class="site-name">猪脚面线的知识库</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/isaacgaoblog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">知识库</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/isaacgaoblog/article/frontend/" class="nav-link">前端</a></li><li class="dropdown-item"><!----> <a href="/isaacgaoblog/article/backend/" class="nav-link">后端</a></li></ul></div></div><div class="nav-item"><a href="/isaacgaoblog/posts/" class="nav-link router-link-active">博文</a></div><div class="nav-item"><a href="https://www.github.com/Cobatkao" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/isaacgaoblog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">知识库</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/isaacgaoblog/article/frontend/" class="nav-link">前端</a></li><li class="dropdown-item"><!----> <a href="/isaacgaoblog/article/backend/" class="nav-link">后端</a></li></ul></div></div><div class="nav-item"><a href="/isaacgaoblog/posts/" class="nav-link router-link-active">博文</a></div><div class="nav-item"><a href="https://www.github.com/Cobatkao" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>博文</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/isaacgaoblog/posts/" class="sidebar-link">碎碎念</a></li><li><a href="/isaacgaoblog/posts/布局全解.html" class="sidebar-link">布局全解</a></li><li><a href="/isaacgaoblog/posts/重绘与重排.html" class="sidebar-link">重绘与重排</a></li><li><a href="/isaacgaoblog/posts/小白也可以搞懂的闭包.html" class="sidebar-link">小白也可以搞懂的闭包</a></li><li><a href="/isaacgaoblog/posts/小白上手Promise.html" class="sidebar-link">小白上手Promise</a></li><li><a href="/isaacgaoblog/posts/多人博客项目review.html" class="sidebar-link">多人博客项目Review</a></li><li><a href="/isaacgaoblog/posts/前端必须知道的HTTP缓存.html" class="sidebar-link">前端必须知道的HTTP缓存</a></li><li><a href="/isaacgaoblog/posts/从封装两个函数到入门jQuery.html" class="active sidebar-link">从封装两个函数到入门jQuery</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/isaacgaoblog/posts/从封装两个函数到入门jQuery.html#调用方法" class="sidebar-link">调用方法</a></li><li class="sidebar-sub-header"><a href="/isaacgaoblog/posts/从封装两个函数到入门jQuery.html#代码优化思路" class="sidebar-link">代码优化思路</a></li><li class="sidebar-sub-header"><a href="/isaacgaoblog/posts/从封装两个函数到入门jQuery.html#回到jquery" class="sidebar-link">回到jQuery</a></li></ul></li><li><a href="/isaacgaoblog/posts/webpack4初次上手.html" class="sidebar-link">初次上手webpack4</a></li><li><a href="/isaacgaoblog/posts/Vue.2.x全家桶学习手记.html" class="sidebar-link">使用语雀整理Vue笔记</a></li><li><a href="/isaacgaoblog/posts/HTTPS通信机制.html" class="sidebar-link">HTTPS通信机制</a></li><li><a href="/isaacgaoblog/posts/Event_Loop和任务队列.html" class="sidebar-link">前端必须知道的Event Loop</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="碎碎念"><a href="#碎碎念" aria-hidden="true" class="header-anchor">#</a> 碎碎念</h1> <p>本篇博文从封装两个函数开始，作为入门jQuery这门最流行的库的引子。</p> <p>jQuery是世界上最流行，使用占比最大的库，哪怕是在2018年，我认为还是要学习一下，况且jQuery入门成本很低，设计思想很经典，值得学习！</p> <p>这里先推荐阮一峰写的这篇文章：<a href="http://www.ruanyifeng.com/blog/2011/07/jquery_fundamentals.html" target="_blank" rel="noopener noreferrer">jQuery设计思想<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，阮大的文章详细分类了jq的api，并且归纳了他们体现出的设计思想，值得一读。</p> <h1 id="封装"><a href="#封装" aria-hidden="true" class="header-anchor">#</a> 封装</h1> <div class="language- line-numbers-mode"><pre class="language-text"><code>/*1. 获取当前元素的所有兄弟元素 */
+window.customDom = {}
+
+customDOM.getAllSiblings = function (node) {
+    let allChildren = node.parentNode.children
+    let array = {length: 0}
+    for (let i = 0; i &lt; allChildren.length; i++) {
+        if (allChildren[i] !== node) {
+            array[array.length] = allChildren[i]
+            array.length++
+        }
+    }
+    return array
+}
+
+/*2. 一次性添加多个class*/
+/*通过遍历数组来添加多个class*/
+customDOM.addClass = function (node, class) {
+    for (let key in class) {
+        let value = class[key]
+        let method = value ? 'add' : 'remove'
+        node.classList[method](key)
+    }
+}
+
+/*增加命名空间*/
+window.customDOM = {}
+customDOM.getAllSiblings = getAllSiblings()
+customDOM.addClass = addClass()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div> <h2 id="调用方法"><a href="#调用方法" aria-hidden="true" class="header-anchor">#</a> 调用方法</h2> <ol><li><p><code>customDom.getAllSiblings(item3)</code></p></li> <li><p><code>item3.getAllSiblings(item3)</code></p></li></ol> <p>上面两种调用方法，无疑下面的更合理。两种方法来实现</p> <p>方法1：给Node的共有属性添加新的方法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/*1. 获取当前元素的所有兄弟元素 */
+Node.prototype.getAllSiblings = function () {
+    let allChildren = this.parentNode.children
+    let array = {length: 0}
+    for (let i = 0; i &lt; allChildren.length; i++) {
+        if (allChildren[i] !== this) {
+            array[array.length] = allChildren[i]
+            array.length++
+        }
+    }
+    return array
+}
+
+/*2. 一次性添加多个class*/
+/*通过遍历数组来添加多个class*/
+Node.prototype.addClass = function (class) {
+    for (let key in class) {
+        let value = class[key]
+        let method = value ? 'add' : 'remove'
+        this.classList[method](key)
+    }
+}
+item3.addClass({a: true, b: false, c:true)
+//item3.addClass.call(item3, {a: true, b: false, c:true})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>这里的this就是方法被调用时前面的对象。</p> <p>又有一个问题，这样写我们声明的函数还是有可能被改写掉，怎么做呢？</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>window.Node2 = function (node) {
+    return {
+        /*1. 获取当前元素的所有兄弟元素 */
+        getAllSiblings: function () {
+            let allChildren = node.parentNode.children
+            let array = {length: 0}
+            for (let i = 0; i &lt; allChildren.length; i++) {
+                if (allChildren[i] !== node) {
+                    array[array.length] = allChildren[i]
+                    array.length++
+                }
+            }
+            return array
+        },
+        /*2. 一次性添加多个class*/
+        addClass: function (class
+)
+    {
+        for (let key in class) {
+            let value = class[key]
+            let method = value ? 'add' : 'remove'
+            node.classList[method](key)
+        }
+    }
+}
+}
+
+let node2 = Node2(item3)
+node2.getAllSiblings()
+node2.addClass({a: true, b: false, c: true})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><p>可见，这里Node2是一个函数，node2是函数的返回值，调用时的参数item3在Node2中已经传了。这种调用方法更简洁。</p> <p>我们把Node2的名字改为jquery</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>window.jQuery = function (nodeorSelector) {
+    /*如果传入的是选择器：'#item3'*/
+    let node
+    if (typeof nodeorSelector === 'string') {
+        node = document.querySelector(nodeorSelector)
+    } else {
+        node = nodeorSelector
+    }
+    return {
+        /*1. 获取当前元素的所有兄弟元素 */
+        getAllSiblings: function () {
+            let allChildren = node.parentNode.children
+            let array = {length: 0}
+            for (let i = 0; i &lt; allChildren.length; i++) {
+                if (allChildren[i] !== node) {
+                    array[array.length] = allChildren[i]
+                    array.length++
+                }
+            }
+            return array
+        },
+        /*2. 一次性添加多个class*/
+        addClass: function (class
+)
+    {
+        for (let key in class) {
+            let value = class[key]
+            let method = value ? 'add' : 'remove'
+            node.classList[method](key)
+        }
+    }
+}
+}
+
+let node2 = jQuery('#item3')
+node2.getAllSiblings()
+node2.addClass({a: true, b: false, c: true})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><p>所以<code>jQuery()</code>实际上是一个构造函数，它接收一个参数，这个参数可以是一个节点或选择器（用来选择某个元素或节点），然后返回一个方法对象去操作节点。（对其进行某种操作）。</p> <p>这和阮一峰指出的jquery设计思想和主要用法相契合，即</p> <blockquote><p>选择某个网页元素，然后对其进行某种操作</p></blockquote> <p>现在我们一次性操作多个节点，让他们同时添加某个类，又加了一个获取文本的方法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>window.jQuery = function(nodeOrSelector) {
+    let nodes = {}
+    if (typeof nodeOrSelector === 'string') {
+        let temp = document.querySelectorAll(nodeOrSelector)
+        for (let i = 0; i &lt; temp.length; i++) {
+            nodes[i] = temp[i]
+        }
+        nodes.length = temp.length
+    } else if (nodeOrSelector instanceof Node) {
+        nodes = {
+            0: nodeOrSelector,
+            length: 1
+        }
+    }
+
+    nodes.getAllSiblings = function() {
+        ...
+    }
+
+    nodes.addClass = function (classes) {
+        classes.forEach((val) =&gt; {
+            for (let i = 0; i &lt; nodes.length; i++) {
+                nodes[i].classList.add(val)
+            }
+        })
+    }
+
+    nodes.text = function (text) {
+        if (text === undefined) {
+            var texts = []
+            for (let i = 0; i &lt; nodes.length; i++) {
+                texts.push(nodes[i].textContent)
+            }
+            return texts
+        } else {
+            for (let i = 0; i &lt; nodes.length; i++) {
+                nodes[i].textContent = text
+            }
+        }
+    }
+
+    return nodes
+}
+
+jQuery('ul &gt; li').addClass(['blue'])
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><p>如上，text方法是执行获取文本还是设置文本完全由参数决定。这也是jQuery的设计思想之一，即</p> <blockquote><p>使用同一个函数，来完成取值（getter）和赋值（setter），即&quot;取值器&quot;与&quot;赋值器&quot;合一。到底是取值还是赋值，由函数的参数决定。</p></blockquote> <p>jq中类似的api还有很多，如<code>html()</code>,<code>text()</code>,<code>attr()</code>,<code>width()</code>,<code>height()</code>,<code>val() //取出某个表单元素的值</code>。</p> <p>⚠️， 以上元素的存值时是将所有值赋到元素上，但是在取值时则只取出结果集的第一个值，这是jQuery比较让人费解的点。</p> <p>对了，除了<code>text()</code>，它会返回完整的文本集。</p> <h2 id="代码优化思路"><a href="#代码优化思路" aria-hidden="true" class="header-anchor">#</a> 代码优化思路</h2> <p>原则</p> <ol><li>如果出现类似的代码，就存在优化的可能；
+<ul><li>如上例中的<code>node.classList...</code>等语句</li></ul></li> <li>增加命名空间（防止变量名污染）</li> <li></li></ol> <h2 id="回到jquery"><a href="#回到jquery" aria-hidden="true" class="header-anchor">#</a> 回到jQuery</h2> <ol><li>jQuery 在兼容性方面做得很好，1.7 版本兼容到 IE 6</li> <li>jQuery 还有动画、AJAX 等模块，不止 DOM 操作</li> <li>jQuery 的功能更丰富</li> <li>jQuery 使用了 prototype</li></ol> <p>你已经了解 jQuery 了</p></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/isaacgaoblog/assets/js/app.01da7489.js" defer></script><script src="/isaacgaoblog/assets/js/20.66d4ff5f.js" defer></script>
+  </body>
+</html>

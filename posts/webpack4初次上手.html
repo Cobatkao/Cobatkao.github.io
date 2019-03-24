@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>初次上手webpack4 | 猪脚面线的知识库</title>
+    <meta name="description" content="For what it&#39;s worth, it&#39;s never too late.（Updating... XD）">
+    <link rel="icon" href="/isaacgaoblog/logo.ico">
+    
+    <link rel="preload" href="/isaacgaoblog/assets/css/0.styles.60655061.css" as="style"><link rel="preload" href="/isaacgaoblog/assets/js/app.01da7489.js" as="script"><link rel="preload" href="/isaacgaoblog/assets/js/19.b706601e.js" as="script"><link rel="prefetch" href="/isaacgaoblog/assets/js/10.bb6e04e4.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/11.391fd545.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/12.602facc5.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/13.2d9982a6.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/14.83aaa352.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/15.90b7ef7b.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/16.fb97507d.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/17.d2fb61a5.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/18.5f85ae3a.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/2.3704caf5.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/20.66d4ff5f.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/21.341d678b.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/22.3af63f24.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/23.4ecf9c22.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/24.15a6c94a.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/25.bc5a5667.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/26.823bab78.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/27.0327437d.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/28.db82409c.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/29.e695a449.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/3.98b19d1d.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/4.4d6e9538.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/5.44d0334a.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/6.b35e585c.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/7.723d1e3a.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/8.e2bfc8ff.js"><link rel="prefetch" href="/isaacgaoblog/assets/js/9.508f61f1.js">
+    <link rel="stylesheet" href="/isaacgaoblog/assets/css/0.styles.60655061.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/isaacgaoblog/" class="home-link router-link-active"><!----> <span class="site-name">猪脚面线的知识库</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/isaacgaoblog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">知识库</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/isaacgaoblog/article/frontend/" class="nav-link">前端</a></li><li class="dropdown-item"><!----> <a href="/isaacgaoblog/article/backend/" class="nav-link">后端</a></li></ul></div></div><div class="nav-item"><a href="/isaacgaoblog/posts/" class="nav-link router-link-active">博文</a></div><div class="nav-item"><a href="https://www.github.com/Cobatkao" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/isaacgaoblog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">知识库</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/isaacgaoblog/article/frontend/" class="nav-link">前端</a></li><li class="dropdown-item"><!----> <a href="/isaacgaoblog/article/backend/" class="nav-link">后端</a></li></ul></div></div><div class="nav-item"><a href="/isaacgaoblog/posts/" class="nav-link router-link-active">博文</a></div><div class="nav-item"><a href="https://www.github.com/Cobatkao" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>博文</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/isaacgaoblog/posts/" class="sidebar-link">碎碎念</a></li><li><a href="/isaacgaoblog/posts/布局全解.html" class="sidebar-link">布局全解</a></li><li><a href="/isaacgaoblog/posts/重绘与重排.html" class="sidebar-link">重绘与重排</a></li><li><a href="/isaacgaoblog/posts/小白也可以搞懂的闭包.html" class="sidebar-link">小白也可以搞懂的闭包</a></li><li><a href="/isaacgaoblog/posts/小白上手Promise.html" class="sidebar-link">小白上手Promise</a></li><li><a href="/isaacgaoblog/posts/多人博客项目review.html" class="sidebar-link">多人博客项目Review</a></li><li><a href="/isaacgaoblog/posts/前端必须知道的HTTP缓存.html" class="sidebar-link">前端必须知道的HTTP缓存</a></li><li><a href="/isaacgaoblog/posts/从封装两个函数到入门jQuery.html" class="sidebar-link">从封装两个函数到入门jQuery</a></li><li><a href="/isaacgaoblog/posts/webpack4初次上手.html" class="active sidebar-link">初次上手webpack4</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/isaacgaoblog/posts/webpack4初次上手.html#处理字体文件" class="sidebar-link">处理字体文件</a></li><li class="sidebar-sub-header"><a href="/isaacgaoblog/posts/webpack4初次上手.html#使用插件" class="sidebar-link">使用插件</a></li><li class="sidebar-sub-header"><a href="/isaacgaoblog/posts/webpack4初次上手.html#模块热替换" class="sidebar-link">模块热替换</a></li></ul></li><li><a href="/isaacgaoblog/posts/Vue.2.x全家桶学习手记.html" class="sidebar-link">使用语雀整理Vue笔记</a></li><li><a href="/isaacgaoblog/posts/HTTPS通信机制.html" class="sidebar-link">HTTPS通信机制</a></li><li><a href="/isaacgaoblog/posts/Event_Loop和任务队列.html" class="sidebar-link">前端必须知道的Event Loop</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><blockquote><p>第一次上手webpack就是4.x版本，网络上绝大多数教程都是3.x，1.x的，因此走了不少弯路，特地记录下来。</p></blockquote> <h1 id="webpack"><a href="#webpack" aria-hidden="true" class="header-anchor">#</a> webpack</h1> <h5 id="理解"><a href="#理解" aria-hidden="true" class="header-anchor">#</a> 理解</h5> <p>webpack可以看作是模块打包机：他做的事情就是分析你的项目结构，找到js模块以及其它浏览器无法直接运行的拓展语言（scss，typescript等等），并将其打包为合适的格式供浏览器使用！</p> <h5 id="构建"><a href="#构建" aria-hidden="true" class="header-anchor">#</a> 构建</h5> <p>构建就是把源代码转换成发布到线上的可执行Javascript，CSS，HTML代码，包括如下内容：</p> <ul><li>代码转换：Typescript编译成JS，SCSS编译成CSS；</li> <li>文件优化：压缩js，css，html，图片等；</li> <li>代码分割：提取多个页面的公共代码，提取首屏不需要执行的代码使其异步按需加载；</li> <li>模块合并：把多个模块构建，合并成一个文件；</li> <li>自动刷新：监听本地源代码变化，自动重新构建、刷新浏览器；</li> <li>代码校验：代码被提交到仓库前检验代码，单元测试是否通过等等；</li> <li>自动发布：更新完代码后，自动构建出线上发布代码并传输给发布系统；</li></ul> <h1 id="重要概念"><a href="#重要概念" aria-hidden="true" class="header-anchor">#</a> 重要概念</h1> <ul><li><p>entry：指定了webpack从哪一个模块开始分析你的项目结构和模块间依赖关系。在配置文件中的<code>entry</code>字段下指定入口起点，默认值为<code>./src</code>。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> <span class="token string">'./path/to/my/entry/file.js'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></li> <li><p>output：指定webpack打包后的文件输出到哪里，<code>output</code>对象下有<code>path</code>和<code>filename</code>来定义生成目录及打包文件名。</p></li> <li><p>loader：loader可以让webpack处理非JS文件，使其预先转换为webpack可以理解的模块，然后再进行处理。在<code>module</code>对象下定义一个<code>rules</code>属性，内部包含两个属性：<code>test</code>和<code>use</code>，前者用正则匹配预处理的文件类型，后者指定预处理的loaders。</p></li> <li><p>plugins：相比loader，插件可以处理范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。</p></li></ul> <h3 id="mode"><a href="#mode" aria-hidden="true" class="header-anchor">#</a> mode</h3> <p>通过选择<code>development</code>或<code>production</code>之中的一个，来设置<code>mode</code>参数，你可以启用相应模式下的webpack内置的优化。有两种方式来引入它们:</p> <ul><li>配置文件</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  mode<span class="token punctuation">:</span> <span class="token string">'production'</span> <span class="token comment">// development</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>cli</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>webpack <span class="token operator">--</span>mode<span class="token operator">=</span>production
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>完整打包命令</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&quot;scripts&quot;: {
+     &quot;dev&quot;: &quot;webpack --mode development ./src/index.js --output ./dist/main.js&quot;,
+   &quot;build&quot;: &quot;webpack --mode production ./src/index.js --output ./dist/main.js&quot;
+ },
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>未指定输入输出对象打包</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>npx webpack --mode developement
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>webpack 4引入的特性，默认输入文件位置在<code>src/index.js</code>，默认输出文件则是<code>dist/main.js</code>。</p> <h3 id="watch"><a href="#watch" aria-hidden="true" class="header-anchor">#</a> watch</h3> <p>我们可以让 webpack 监控文件变化，一旦文件有变化，就重新构建。但默认情况下，watch 选项是禁用的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npx webpack --mode development --watch
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="webpack的规范支持"><a href="#webpack的规范支持" aria-hidden="true" class="header-anchor">#</a> webpack的规范支持</h3> <p>webpack支持es6, CommonJS, AMD。</p> <h1 id="快速上手"><a href="#快速上手" aria-hidden="true" class="header-anchor">#</a> 快速上手</h1> <ol><li><p>创建一个本地目录study_webpack目录，进入该目录</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>mkdir study_webpack
+cd study_webpack
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></li> <li><p>初始化npm，生成<code>package.json</code></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm init <span class="token operator">-</span>y
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><code>package.json</code>文件定义了项目所依赖的各模块及项目的配置信息，有了这个文件，直接使用<code>npm install</code>命令，就会在当前目录中安装所需要的模块。
+该文件中有两个字段需要注意：<code>dependencies</code>字段，<code>devDependencies</code>字段。前者是<strong>项目运行</strong>所依赖的模块，后者是<strong>项目开发</strong>所依赖的模块。</p> <p>此外，还有一个<code>package-lock.json</code>，在<code>npm install</code>时自动生成，用来锁定当前状态下实际安装的模块版本号，避免拉取模块时版本不同造成不兼容。只要保存这份文件，在任意一台机器上，npm会按照<code>package-lock.json</code>所标示的具体版本下载依赖包，保证安装的完全一样！</p> <p>如果改了<code>package.json</code>，且<code>package.json</code>和<code>lock</code>文件不同，那么执行<code>npm i</code>时npm会根据package中的版本号以及语义含义去下载最新的包，并更新至lock。如果两者是同一状态，那么执行<code>npm i</code>都会根据lock下载，不会理会package实际包的版本是否有新。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">//--save参数表示将该模块写入dependencies属性</span>
+npm install express <span class="token operator">--</span>save
+<span class="token comment">//--save-dev表示将该模块写入devDependencies属性</span>
+npm install express <span class="token operator">--</span>save<span class="token operator">-</span>dev
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></li> <li><p>安装webpack</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">//本地安装，且默认安装最新版本</span>
+npm install webpack <span class="token operator">--</span>save<span class="token operator">-</span>dev
+<span class="token comment">//本地安装，且安装指定版本</span>
+npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev webpack@<span class="token operator">&lt;</span>version<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></li> <li><p>安装webpack-cli</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">//不要忘记webpack4.x开始webpack-cli是必备的</span>
+npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev webpack<span class="token operator">-</span>cli
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>webpack4.x开始，命令行相关的东西单独拆了出去封装成了webpack-cli。</p></li> <li><p>检查webpack是否安装成功</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>node_modules<span class="token operator">/</span><span class="token punctuation">.</span>bin<span class="token operator">/</span>webpack <span class="token operator">-</span>v
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>执行该命令后会出现对应的版本号，目前是4.17.1。这里如果用<code>webpack -v</code>会报错，因为webpack并未全局安装，所以需要加上绝对路径，找到对应的可执行文件。</p></li> <li><p>修改package.json</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack --mode development&quot;
+  },
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>⚠️ 记住指定mode，入口文件（默认为src下的index.js）。
+此时运行<code>npm run dev</code>，成功打包并且项目内多出了dist文件夹。在不使用配置文件的前提下，我们按照如下配置开发，运行环境的script</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack --mode development ./src/index.js --output ./dist/main.js&quot;,
+    &quot;build&quot;: &quot;webpack --mode production ./src/index.js --output ./dist/main.js&quot;
+ }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></li> <li><p>打包</p> <p>语法：webpack + 源文件 + 输出文件</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>node_modules<span class="token operator">/</span><span class="token punctuation">.</span>bin<span class="token operator">/</span>webpack <span class="token operator">-</span>o a<span class="token punctuation">.</span>js bundle<span class="token punctuation">.</span>js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>我们注意到<code>node_modules/.bin/webpack</code>路径太长了，写起来很繁琐，解决办法：</p> <ul><li>script：<code>&quot;pack&quot;: &quot;node_modules/.bin/webpack&quot;,</code>，然后<code>npm run pack</code>即可打包；</li> <li>npx：见下文</li></ul> <h4 id="多入口打包"><a href="#多入口打包" aria-hidden="true" class="header-anchor">#</a> 多入口打包</h4> <p>有时业务逻辑比较复杂，页面中不止一页</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        home<span class="token punctuation">:</span> <span class="token string">'./js/home.js'</span><span class="token punctuation">,</span>
+        signup<span class="token punctuation">:</span> <span class="token string">'./js/signup.js'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        filename<span class="token punctuation">:</span> <span class="token string">'[name].bundle.js'</span> <span class="token comment">//name指代对应的home或signup,</span>
+        path<span class="token punctuation">:</span> __dirname <span class="token operator">+</span> <span class="token string">'dist'</span> <span class="token comment">//当前目录下的dist目录内输出</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h4 id="es6写法"><a href="#es6写法" aria-hidden="true" class="header-anchor">#</a> es6写法</h4> <p>现在尽量使用ES6写法，更精简</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//暴露变量
+var open = false
+
+//nodejs写法，common-js
+module.exports = {
+    open: open
+}
+//es6写法
+export default {
+    open
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>//引入变量
+var base = require('./base')
+var open = base.open
+
+//es6模块及解构写法
+import {open} from './base' 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li> <li><p>配置文件</p> <p>webpack可选配置项非常多，如果每次都写在script里面导致非常冗长。因此我们新建一个<code>webpack.config.js</code>来写.</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">//webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">//这里面写webpack参数</span>
+    entry<span class="token punctuation">:</span> <span class="token string">'./a'</span><span class="token punctuation">,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        filename<span class="token punctuation">:</span> <span class="token string">'pack.js'</span><span class="token punctuation">,</span>
+        path<span class="token punctuation">:</span> __dirname <span class="token comment">//指向当前文件所在的目录</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//另一种</span>
+<span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+	entry<span class="token punctuation">:</span> <span class="token string">'./a.js'</span><span class="token punctuation">,</span>
+	output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+		filename<span class="token punctuation">:</span> <span class="token string">'a.bundle.js'</span><span class="token punctuation">,</span>
+		path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./dist'</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//运行webpack --mode=development打包</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>⚠️ 这时候可以在命令行直接执行webpack，不用指明输出输入即可打包。</p></li> <li><p><strong>loader</strong></p> <p>当一个模块import其它非js类型的文件，则需要loader进行预处理，将其转换为js可以理解的方式，最后穿插进html里头。比如在js中直接引入css文件，用css-loader和style-loader</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm i css-loader style-loader -D
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>配置文件中，在<code>module.rules</code>中指定多个loader</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//webpack.config.js
+module.exports = {
+    entry: ...,
+    output: {
+        filename: ...,
+        path: ...
+    }
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'] 
+            },
+            {
+                test: /\.ts$/,
+                use: 'ts-loader'
+            }
+        ]
+}
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li>用正则匹配所有.css结尾的文件</li> <li>将css文件编译为webpack可以理解的形式，然后再用style-loader，将编译好的css注入到到head内的style标签。</li> <li><strong>确保loader的依赖关系的正确</strong>。loader的执行顺序为从右往左！右边的执行结果作为参数传到左边。如下：<div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    test:/\.less$/,
+    use:[
+        'style-loader','css-loader','less-loader'
+    ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>less-loader把less转化成css，传给css-loader，css-loader把结果给style-loader，style-loader返回javascript代码字符串。</li></ul></li></ul></li> <li><p>卸载webpack</p> <ul><li><p>删除全局webpack-cli</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm uninstall <span class="token operator">-</span>g webpack<span class="token operator">-</span>cli
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><code>uninstall</code>可以简写成<code>un</code>，<code>-g</code>是<code>--global</code>的简写。注意，执行该命令之后并未真的完成卸载，我们还需要删除局部安装的webpack-cli。</p></li> <li><p>删除局部（本地）的webpack-cli</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm uninstall webpack<span class="token operator">-</span>cli
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li><p>删除全局webpack</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm uninstall <span class="token operator">-</span>g webpack
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>很多时候不确定自己是否全局安装还是本地安装了，所以先执行一次全局删除。</p></li> <li><p>删除本地webpack</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm un webpack
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这时候可以检查全局和本地的node_modules里面是否还存在wenpack。</p></li> <li><p>检查残余webpack文件</p></li></ul> <p>用ls命令查看一下是否有这几个文件
+<code>node_modules</code> <code>package-lock.json</code> <code>package.json</code>，如果有的话，执行<code>rm -rf node_modules package-lock.json package.json</code>，这样就彻底删除干净了！</p></li></ol> <h1 id="细节"><a href="#细节" aria-hidden="true" class="header-anchor">#</a> 细节</h1> <h3 id="零配置"><a href="#零配置" aria-hidden="true" class="header-anchor">#</a> 零配置</h3> <p>webpack4支持零配置，这里所说的0配置又是什么呢？</p> <ol><li><p>在使用webpack进行打包的时候，默认情况下会将src下的入口文件(index.js)进行打包，默认出口为dist目录下的main.js</p></li> <li><p>webpack会自动查找项目中src目录下的index.js文件，然后进行打包，生成一个dist目录并存在一个打包好的main.js文件</p></li></ol> <p>零配置的真相即是如此，所谓零配置根本是无用的！</p> <h3 id="npx"><a href="#npx" aria-hidden="true" class="header-anchor">#</a> npx</h3> <p>在高于npm5.2.0版本中，会自动安装npx模块，它是一种包运行器，目的是给用户更方便的包操作体验。</p> <p>npx会帮助你执行依赖包里的二进制文件。在此之前我们经常这么写</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm i <span class="token operator">-</span><span class="token constant">D</span> webpack
+<span class="token punctuation">.</span><span class="token operator">/</span>node_modules<span class="token operator">/</span><span class="token punctuation">.</span>bin<span class="token operator">/</span>webpack <span class="token operator">-</span>v
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>有了npx，我们只要这样：</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm i <span class="token operator">-</span><span class="token constant">D</span> webpack
+npx webpack <span class="token operator">-</span>v
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>npx 会自动查找当前依赖包中的可执行文件，如果找不到，就会去 PATH 里找。如果依然找不到，就会帮你安装！</p> <h3 id="配置文件"><a href="#配置文件" aria-hidden="true" class="header-anchor">#</a> 配置文件</h3> <p>正如上面说的，实际工程中零配置是无用的，所以我们还是需要维护一份配置文件：<code>webpack.config.js</code>。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  mode<span class="token punctuation">:</span> <span class="token string">'development'</span><span class="token punctuation">,</span>
+  entry<span class="token punctuation">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'bundle.js'</span><span class="token punctuation">,</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ol><li>打包时，cli中的命令也修改为<code>npx webpack --config webpack.config.js</code>；</li> <li>注意，webpack4默认引用名为<code>webapck.config.js</code>的配置文件，所以也可以不用<code>--config</code>，但对于多配置文件很有用；</li> <li>引用了node的path模块，不熟的话看<a href="http://javascript.ruanyifeng.com/nodejs/path.html#toc0" target="_blank" rel="noopener noreferrer">文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>；</li></ol> <h3 id="npm-script"><a href="#npm-script" aria-hidden="true" class="header-anchor">#</a> npm script</h3> <p>事实上，使用cli来运行webpack很不方便，所以我们在<code>package.json</code>中添加<code>script</code>。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token string">&quot;scripts&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;test&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;build&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;webpack&quot;</span>
+  <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>现在即可使用<code>npm run build</code>来达到<code>npx webapck</code>的作用。</p> <h3 id="编译转换你的代码"><a href="#编译转换你的代码" aria-hidden="true" class="header-anchor">#</a> 编译转换你的代码</h3> <p>我们通过babel来编译转换es6代码，需要安装如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm install babel-core babel-loader babel-preset-env --save-dev
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>bable的配置，需要创建一个文件去配置。新建<code>.babelrc</code>文件，写入如下内容</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+  &quot;presets&quot;: [
+    &quot;env&quot;
+  ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>接下来需要配置babel-loader,可以在package.json文件配置，但是还是独立出去好，比较好维护。项目下新建一个webpack.config.js.加入一些基础配置。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// webpack v4
+const path = require('path');
+module.exports = {
+  entry: { main: './src/index.js' },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &quot;babel-loader&quot;
+        }
+      }
+    ]
+  }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>然后package.json的脚本可以去除一些配置.</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack --mode development&quot;,
+  &quot;build&quot;: &quot;webpack --mode production&quot;
+  },
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>然后再运行编译，也是可以正常编译。</p> <h3 id="html-css文件处理"><a href="#html-css文件处理" aria-hidden="true" class="header-anchor">#</a> html&amp;css文件处理</h3> <p>为了从JavaScript模块中import一个CSS文件，你需要在module配置中安装并添加<code>style-loader</code>和<code>css-loader</code>：</p> <ul><li>安装插件和加载器</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev style<span class="token operator">-</span>loader css<span class="token operator">-</span>loader
+npm install extract<span class="token operator">-</span>text<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin <span class="token operator">--</span>save<span class="token operator">-</span>dev
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>然后再修改配置文件中<code>module</code>属性</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">// webpack v4</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> ExtractTextPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'extract-text-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//新加入</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> <span class="token punctuation">{</span> main<span class="token punctuation">:</span> <span class="token string">'./src/index.js'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'main.js'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+        exclude<span class="token punctuation">:</span> <span class="token regex">/node_modules/</span><span class="token punctuation">,</span>
+        use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          loader<span class="token punctuation">:</span> <span class="token string">&quot;babel-loader&quot;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+        use<span class="token punctuation">:</span> ExtractTextPlugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span>
+          <span class="token punctuation">{</span>
+            fallback<span class="token punctuation">:</span> <span class="token string">'style-loader'</span><span class="token punctuation">,</span>
+            use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'css-loader'</span><span class="token punctuation">]</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token comment">// 新加的css 规则</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><p>上面我们提出css来编译，你可以看到他的规则， 规则可以这样认为：</p> <blockquote><p>通过正则来匹配非js的文件类型，然后指定需要引入的loader。
+然后我们在src中创建css文档，在依赖于此样式的文件中import样式文件。再执行<code>npm run build</code>后，样式已经更改了，css已经注入到<code>&lt;style&gt;</code>内。</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+        test: /\.拓展名$/,
+        exclude: /不需要执行的文件夹/,
+        use: {
+          loader: &quot;你的加载器&quot;
+        }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>我们需要extract-text-webpack-plugin这个提取插件，因为webpack只会辨别js。这里需要通过ExtractTextPlugin单独提取css文本进行压缩。</p> <p>我们再次尝试编译，<code>npm run dev</code>发现会有报错，这个是因为这个提取器在新版本的原因。解决这个问题，那就是换个版本。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm install -D extract-text-webpack-plugin@next
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>然后再编译，发现可以来，同时再dist下有一个style.css文件。</p> <h4 id="scss配置"><a href="#scss配置" aria-hidden="true" class="header-anchor">#</a> scss配置</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm install node-sass sass-loader --save-dev
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="保持dist整洁"><a href="#保持dist整洁" aria-hidden="true" class="header-anchor">#</a> 保持dist整洁</h3> <p>这里使用<code>clean-webpack-plugin</code>插件.</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm i clean-webpack-plugin --save-dev
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>比如对dist目录进行清洁</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>new CleanWebpackPlugin('dist', {} ),//新加
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="缓存"><a href="#缓存" aria-hidden="true" class="header-anchor">#</a> 缓存</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>// webpack v4
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');// 新加
+
+module.exports = {
+  entry: { main: './src/index.js' },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[chunkhash].js' //changed
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &quot;babel-loader&quot;
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract(
+          {
+            fallback: 'style-loader',
+            use: ['css-loader']
+          })
+      }// 新加
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin(
+      {filename: 'style.[chunkhash].css', disable: false, allChunks: true}
+    ), //changed
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: './src/index.html',
+      filename: 'index.html'
+    })
+
+  ]
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br></div></div><p>然后src下的html也要修改</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%=htmlWebpackPlugin.files.chunks.main.css %&gt;&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;Hello, world!&lt;/div&gt;
+    &lt;script src=&quot;&lt;%= htmlWebpackPlugin.files.chunks.main.entry %&gt;&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>好了，现在可以编译，会发现dist下的css和js名字是带有hash指的。</p> <h3 id="打包图片"><a href="#打包图片" aria-hidden="true" class="header-anchor">#</a> 打包图片</h3> <p>有时候css中的背景和图片如何处理呢？使用<code>file-loader</code>。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev file<span class="token operator">-</span>loader
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>相应的修改配置文件，在脚本中引入图片，相当于图片依赖于css文件。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">import</span> _ <span class="token keyword">from</span> <span class="token string">'lodash'</span>
+<span class="token keyword">import</span> <span class="token string">'./style.css'</span>
+<span class="token keyword">import</span> myImage <span class="token keyword">from</span> <span class="token string">'./icon.jpg'</span>
+
+<span class="token keyword">function</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Lodash目前通过这行脚本引入了</span>
+  element<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Hello'</span><span class="token punctuation">,</span> <span class="token string">'webpack'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  element<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span>
+
+  <span class="token comment">//将图像添加到div中</span>
+  <span class="token keyword">var</span> myIcon <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  myIcon<span class="token punctuation">.</span>src <span class="token operator">=</span> myImage <span class="token comment">//真实图片变量，包含处理后的最终url</span>
+  myIcon<span class="token punctuation">.</span>align <span class="token operator">=</span> <span class="token string">'center'</span>
+  myIcon<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'img is loaded!'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  myIcon<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'img is missing!'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  element<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>myIcon<span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> element<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p><img src="https://i.loli.net/2018/08/28/5b84f789c7668.png" alt="Screen Shot 2018-08-28 at 3.17.49 PM.png"></p> <p>重新构建后，我们就可以看到<code>&lt;body&gt;</code>中插入了<code>&lt;img&gt;</code>标签，且图片文件名更改为<code>6695256e640baf06e45ded32f6c70330.jpg</code>，这意味着webpack已经在src文件夹中找到它并打包处理了。</p> <h2 id="处理字体文件"><a href="#处理字体文件" aria-hidden="true" class="header-anchor">#</a> 处理字体文件</h2> <p><code>file-loader</code>和<code>url-loader</code>可以接收并加载任何文件，然后将其输出到构建目录。这就是说，我们可以将它们用于任何类型的文件，包括字体。让我们更新 <code>webpack.config.js</code>来处理字体文件：</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>test<span class="token punctuation">:</span> <span class="token regex">/\.(png|svg|jpg|gif)$/</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'file-loader'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>test<span class="token punctuation">:</span> <span class="token regex">/\.(woff|woff2|eot|ttf|otf)$/</span><span class="token punctuation">,</span> use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'file-loader'</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>搞定配置文件，并将字体放到src之后，可以通过一个<code>@font-face</code>声明引入。本地的<code>url(...)</code>指令会被webpack获取处理，就像它处理图片资源一样：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'webpack_demo_font'</span><span class="token punctuation">;</span>
+  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url(./atelier-omega.woff.ttf)</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'ttf'</span><span class="token punctuation">)</span>, 
+       <span class="token url">url(./Ã“–ƒ‘√‘≤÷–Œƒ.ttf)</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'ttf'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 600<span class="token punctuation">;</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.hello</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> brown<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 900<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 72px<span class="token punctuation">;</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'webpack_demo_font'</span><span class="token punctuation">;</span>
+  <span class="token comment">/* background: url(./icon.jpg) no-repeat; */</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>这里要用到css3的@font-face规则，来引用自己的字体。由于字体是在css样式文档中引入的，所以相当于字体模块依赖于css。打包后，我们看到了字体和先前的图片都被打包了：</p> <p><img src="https://i.loli.net/2018/08/28/5b84fcedae56e.png" alt="Screen Shot 2018-08-28 at 3.42.08 PM.png"></p> <p>刷新页面后，中英文字体自然都改变了。</p> <h3 id="watch监控文件"><a href="#watch监控文件" aria-hidden="true" class="header-anchor">#</a> watch监控文件</h3> <p>默认情况下<code>watch</code>选项是关闭状态，可以再在<code>package.json</code>的<code>npm script</code>脚本中加上<code>&quot;build&quot;: &quot;webpack --watch&quot;</code>。这样在cli中再运行<code>npm run build</code>，就会看到webpack编译代码，然而不会退出命令行。因为webpack脚本仍然在观察中。</p> <p>这种方法的缺点也是显而易见的，每次编译后都要手动刷新浏览器来查看修改后的页面。为了能够自动刷新浏览器，可以尝试使用<code>webpack-dev-server</code>，恰好可以实现我们想要的功能。</p> <h3 id="webpack-dev-server"><a href="#webpack-dev-server" aria-hidden="true" class="header-anchor">#</a> webpack-dev-server</h3> <p><code>webpack-dev-server</code>提供了一个简单的web服务器，并且能够实时重新加载。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev webpack<span class="token operator">-</span>dev<span class="token operator">-</span>server
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  mode<span class="token punctuation">:</span> <span class="token string">'development'</span><span class="token punctuation">,</span>
+  entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    app<span class="token punctuation">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span>
+    print<span class="token punctuation">:</span> <span class="token string">'./src/print.js'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[name].bundle.js'</span><span class="token punctuation">,</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  devtool<span class="token punctuation">:</span> <span class="token string">'inline-source-map'</span><span class="token punctuation">,</span>
+  devSever<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    contentBase<span class="token punctuation">:</span> <span class="token string">'./dist'</span><span class="token punctuation">,</span>
+    port<span class="token punctuation">:</span> <span class="token number">8080</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      title<span class="token punctuation">:</span> <span class="token string">'Output Management'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">CleanWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'dist'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>以上配置，告诉<code>webpack-dev-server</code>在<code>localhost:8080</code>下建立服务，将<code>dist</code>目录下的文件，作为可访问的文件。
+然后我们修改<code>npm script</code>，让其直接运行开发服务器。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token string">&quot;scripts&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;test&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;build&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;webpack --watch&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;start&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;webpack-dev-server --open&quot;</span>
+  <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>然后，我们运行<code>npm run start</code>，就会立即跳转到浏览器自动加载页面。如果现在修改和保存任意源文件，web服务器就会自动重新加载编译后的代码！</p> <h3 id="加载数据"><a href="#加载数据" aria-hidden="true" class="header-anchor">#</a> 加载数据</h3> <p>除了上述字体，图片外，可以加载的数据还有很多，如 JSON 文件，CSV、TSV 和 XML。类似于 NodeJS，JSON 支持实际上是内置的，也就是说 import Data from './data.json' 默认将正常运行。</p> <p>要导入csv，xml等等都有对应支持的loader，<code>csv-loader</code>和<code>xml-loader</code>。</p> <p>本地安装完对应的eloader，并在src中添加xml后，还是修改配置文件，并在入口文件中引入数据。打包后，你就能看到data被引入了。</p> <h2 id="使用插件"><a href="#使用插件" aria-hidden="true" class="header-anchor">#</a> 使用插件</h2> <p>有时我们在配置文件中改变了入口起点名称，打包后生成的包将被重命名在一个构建中，但此时<code>index.html</code>文件仍然引用旧的名字。这里需要使用<a href="https://www.webpackjs.com/plugins/html-webpack-plugin/" target="_blank" rel="noopener noreferrer"><code>HtmlWebpackPlugin</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>来解决这个问题。它将为你自动生成一个html5，只需要安装后添加插件到配置文档中：</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev html<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      title<span class="token punctuation">:</span> <span class="token string">'Output Management'</span><span class="token punctuation">,</span> <span class="token comment">//新生成html的title</span>
+      template<span class="token punctuation">:</span> <span class="token string">'./src/hello.html'</span><span class="token punctuation">,</span> <span class="token comment">//指定html依赖模板</span>
+      filename<span class="token punctuation">:</span> <span class="token string">'Hello.js'</span><span class="token punctuation">,</span> <span class="token comment">//生成html文件名</span>
+      minify<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          collapseWhitespace<span class="token punctuation">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// 去除html所有空格</span>
+      hash<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//Hello文件名加入hash</span>
+      chunks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'hello'</span><span class="token punctuation">]</span> <span class="token comment">//仅加载需要的js文件</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>打包后，新生成的<code>index.html</code>会替换掉旧的dist中的<code>index.html</code>，还有更多配置可以查看文档。</p> <h3 id="使用source-map"><a href="#使用source-map" aria-hidden="true" class="header-anchor">#</a> 使用source map</h3> <p>作用：精准定位脚本错误。
+有时将多个文件打包后，出现报错，报错仅仅指向了<code>bundle.js</code>，无法精准的知道是哪个模块有错误。此时需要用到<a href="https://www.webpackjs.com/configuration/devtool/" target="_blank" rel="noopener noreferrer"><code>source map</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。source map 有很多不同的选项可用，这里仅适用inline-source-map。在配置文件中进行简单配置：</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>devtool<span class="token punctuation">:</span> <span class="token string">'inline-source-map'</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>然后我们可以在控制台中看出出错的文件，这是很有用的，帮助了我们迅速定位错误位置！
+<img src="https://i.loli.net/2018/08/28/5b851d863e4b8.png" alt="Screen Shot 2018-08-28 at 6.01.12 PM.png"></p> <h2 id="模块热替换"><a href="#模块热替换" aria-hidden="true" class="header-anchor">#</a> 模块热替换</h2> <p>这是webpack提供的最有用的功能之一，它允许在项目运行时替换，添加或删除模块，而无需进行完全刷新整个页面，就像<code>webpack --watch</code>和<code>webpack-dev-server</code>做的那样。</p> <p>注意，热替换仅能在开发环境中使用。</p> <h3 id="使用热替换"><a href="#使用热替换" aria-hidden="true" class="header-anchor">#</a> 使用热替换</h3> <ol><li><p>更新<code>webpack-dev-server</code>的配置，<code>hot: true</code>用来启用热替换特性</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token comment">//...</span>
+    devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">//第一步</span>
+        hot<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></li> <li><p>使用<code>webpack</code>内置的HMR插件 —— <code>NamedModulesPlugin()</code>、<code>HotModuleReplacementPlugin()</code>；</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> <span class="token string">'Output Management'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">CleanWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'dist'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>，
+    <span class="token comment">//第二步：加入下面两个插件</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>NamedModulesPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>HotModuleReplacementPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//启用热替换模块</span>
+<span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>⚠️ 使用模块热替换时，ouput配置的filename应该使用hash使每个打包文件的hash值一致：<code>filename: '[name].[hash].js'</code>，而不是chunkhash。方便模块热加载监控每个文件。</p></li></ol> <h1 id="参考与拓展"><a href="#参考与拓展" aria-hidden="true" class="header-anchor">#</a> 参考与拓展</h1> <ol><li><a href="https://segmentfault.com/a/1190000013146997" target="_blank" rel="noopener noreferrer">webpack技术讲解及入门 - 饥人谷<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://github.com/slashhuang/blog/issues/1" target="_blank" rel="noopener noreferrer">webpack编译流程漫谈<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://www.bilibili.com/video/av18853964?from=search&seid=7378206338540865206" target="_blank" rel="noopener noreferrer">webpack3零基础入门视频教程(全14讲)<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ol></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/isaacgaoblog/assets/js/app.01da7489.js" defer></script><script src="/isaacgaoblog/assets/js/19.b706601e.js" defer></script>
+  </body>
+</html>
